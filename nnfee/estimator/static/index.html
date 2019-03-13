@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>nnfee</title>
+    </head>
+    <body>
+        <h1>nnfee</h1>
+        <pre>
+
+Prediction Legend:
+
+0: 15 minutes
+1: 30 minutes
+2:  1 hour
+3:  4 hours
+4: 12 hours
+5:  1 day
+6:  3 days
+7: +3 days
+        </pre>
+
+        <input type="text" id="fee_per_byte" value="1" />
+        fee_per_byte
+        <br />
+        <input type="text" id="mempool_megabytes" value="1" />
+        mempool_megabytes
+        <br />
+        <input type="text" id="mempool_tx_count" value="3000" />
+        mempool_tx_count
+        <br />
+        <br />
+        <a href="#" onclick="nn()">predict</a>
+        <br />
+
+        <pre id="output"></pre>
+
+        <script charset="utf-8">
+            // hello
+
+var nn = function () {
+    var fee_per_byte = document.querySelector('#fee_per_byte').value
+    var mempool_megabytes = document.querySelector('#mempool_megabytes').value
+    var mempool_tx_count = document.querySelector('#mempool_tx_count').value
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var json = JSON.parse(this.responseText)['result']
+            console.log(json)
+            document.querySelector('#output').innerHTML = "Confidence: " + json['confidence'] + "\nPrediction: " + json['prediction']
+        }
+    };
+    xhttp.open("GET", "/nn/" + fee_per_byte + "/" + mempool_megabytes + "/" + mempool_tx_count, true);
+    xhttp.send();
+}
+        </script>
+    </body>
+</html>

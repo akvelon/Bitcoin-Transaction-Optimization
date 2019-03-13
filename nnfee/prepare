@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+docker-compose run collector ruby prepare.rb "$@"
+# mv -f ./collector/fee_*.csv ./data/estimator/csv/

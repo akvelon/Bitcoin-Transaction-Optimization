@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+docker-compose run estimator python cli.py "$@"

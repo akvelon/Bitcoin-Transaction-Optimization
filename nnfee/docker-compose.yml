@@ -1,0 +1,70 @@
+version: '3'
+services:
+
+  # Used to distribute block ids to make sure workers don't work
+  # on the same block
+
+  harmony:
+    build: collector/
+    command: ruby harmony.rb
+    volumes:
+      - ./data/collector:/data:ro
+
+
+
+
+  # Collects mempool and transaction data
+
+  collector:
+    build: collector/
+    command: ruby collect.rb
+    environment:
+      - DB_PATH=/data
+      - MEMPOOL_RAW_PATH=/data/mempool.log
+      - MEMPOOL_JSON_PATH=/data/mempool.json
+      - MEMPOOL_START_TIME=01-11-2018
+      - PREPARE_OUTPUT_FILE=/data/out.csv
+      - NO_VALIDATION=true
+    volumes:
+      - ./collector:/myapp
+      - ./data/collector:/data
+    depends_on:
+      - harmony
+
+
+
+
+  # Handles cli estimation
+
+  estimator:
+    build: estimator/
+    command: python --version
+    environment:
+      - MODELS_DIR=/data/models
+    volumes:
+      - ./estimator:/myapp
+      - ./data/estimator:/data
+      - ./data/collector/out/:/train:ro
+    depends_on:
+      - collector
+
+
+
+
+  # Example usage of the estimator as an API
+
+  api:
+    build: estimator/
+    command: flask run -h 0.0.0.0
+    environment:
+      - MODELS_DIR=/data/models
+      - FLASK_APP=web.py
+      - FLASK_DEBUG=1
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./estimator:/myapp:ro
+      - ./data/estimator:/data:ro
+      - ./data/collector/out/:/train:ro
+    depends_on:
+      - collector

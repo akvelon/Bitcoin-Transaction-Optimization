@@ -1,0 +1,4 @@
+.idea
+data/collector/
+data/**/*.csv
+data/estimator/models
