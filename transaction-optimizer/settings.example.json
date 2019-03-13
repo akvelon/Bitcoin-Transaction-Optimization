@@ -1,0 +1,14 @@
+{
+  "rpc-url": "http://localhost:18443",
+  "rpc-user": "user",
+  "rpc-password": "password",
+  "pay-request-chunk-size": 10,
+  "aws-profile": "bto",
+  "pay-request-sqs-url": "https://sqs.us-east-1.amazonaws.com/xxxxxxxxxxxx/pay-request",
+  "prepared-transaction-sqs-url": "https://sqs.us-east-1.amazonaws.com/xxxxxxxxxxxx/prepared-transaction",
+  "sqs-wait-time-seconds": 2,
+  "optimize-round-time-seconds": 5,
+  "pay-request-visibility-time-seconds": 15,
+  "change-account-name": "main",
+  "fee-predictor-url": "http://localhost:8000/api/v1.0/prediction/"
+}
