@@ -1,7 +1,4 @@
-# BTO doc
-
-## Description
-nothing here so far :(
+# Bitcoin transaction optimization
 
 ## Implementation
 ### Fee prediction
@@ -14,5 +11,11 @@ We can collect the data from past starting approximately from 2016 (which is lim
 3. After that the model is used by fee predictor api which based on suggested transaction characteristics, looks for mempool characteristics and responds with prediction result.
     * Please check out the [Predictor service doc](FeePredictorService.md) for more details.
 
+### Pay request generator
+The application generates test pay requests and pushes them into pay-request SQS. These pay requests are consumed by transaction optimizer.
+
+### Transaction optimizer
+The application pulls pay requests from pay-request queue and assembles transactions. Prepared transactions are pushed into prepared-transactions SQS.
+
 ### Transaction sender
-The app responsible for processing transactions requests and making real posting to mempool. More details [here](TransactionSender.md)
+The app responsible for pulling transactions from prepared-transactions SQS and sending them into bitcoin network. More details [here](TransactionSender.md).
