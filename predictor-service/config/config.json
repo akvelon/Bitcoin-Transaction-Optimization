@@ -1,0 +1,4 @@
+{
+  "model_path": "model/fee-predictor-model.h5",
+  "scaler_path": "model/scaler.pkl"
+}
