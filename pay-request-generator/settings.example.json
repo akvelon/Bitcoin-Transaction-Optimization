@@ -1,0 +1,11 @@
+{
+  "aws-profile": "bto",
+  "pay-request-sqs-url": "https://sqs.us-east-1.amazonaws.com/xxxxxxxxx/pay-request",
+  "target-addresses": [
+    "2MuVKxrtsVv2kyu2L64c8Nz1X1bikURGUaz",
+    "mjBXbyK5hFhqPCiF8TJx6is7GgasGvp6Fm",
+    "2N67hPP78fh6suMKUBaxHJ2KfbL9zJR97ET",
+    "mpjDqw9zixvf9yd9JWs5cueVGpfGEAn3KR",
+    "2MxrhETQgDt1hMjB2EmoGfTJYn8e9koGHDW"
+  ]
+}
