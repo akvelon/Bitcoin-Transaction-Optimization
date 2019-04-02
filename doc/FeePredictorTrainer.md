@@ -1,12 +1,12 @@
 # Fee predictor trainer
-This is python based app which is fully developed in Akvelon. Its purpose is to train the model and save it for further usage based on the data we got from Collector app (the `*training.csv` file). Just place it following `Readme.md` in [repo root](https://gitlab.inyar.ru/bitcoin-transaction-optimization/predictor-trainer) and run the app. The model built can be used further by fee predictor API
+This is python based app which is fully developed in Akvelon. Its purpose is to train the model and save it for further usage based on the data we got from Collector app (the `*training.csv` file). Just place it following `Readme.md` in [repo root](https://github.com/akvelon/Bitcoin-Transaction-Optimization/tree/master/predictor-trainer) and run the app. The model built can be used further by fee predictor API
 
 ## Data
 The most important part as it both define what model to use and how well it can be trained so eventually data is the thing which mostly defines the result of our prediction. Our data represents the transactions characteristics and some mempool statistics for the transaction
 
 At this moment we using following data
 
-1. `fee_per_byte` - our target or **Y** vector, as result of training we want to get the model able to predict the fee per byte we need to set so that our transaction defined with other characteristics and with current state of mempool were added to blockchain in specifed time. We assume that fee per byte is the main factor which defined when our transaction would be added to blockchain, if it greater than our transaction would be added faster. If it small (less than **1-2 satoshi/byte**) then probably it would be never included to block.
+1. `fee_per_byte` - our target or **Y** vector, as result of training we want to get the model able to predict the fee per byte we need to set so that our transaction defined with other characteristics and with current state of mempool were added to blockchain in specified time. We assume that fee per byte is the main factor which defined when our transaction would be added to blockchain, if it greater than our transaction would be added faster. If it small (less than **1-2 satoshi/byte**) then probably it would be never included to block.
 
 2. `mempool_bytes` - we have block size limited to **1Mb** and mean speed for addition of new block equal to 10min, which means that if our assumption on fee_per_byte valid then it need to be increased when mempool bigger in order to provide the same confirmation speed. It in bytes so that use the same measurement units as `fee_per_byte`
 
@@ -47,7 +47,7 @@ Well to be honest our aim is not to be precise, but predict the lowest value pos
 
 So how we can evaluate? The current approach is split all the data onto training set and test set (80/20). Test set is not using during the training.
 
-Once we done with model, we looking in our test data the transactions which are confirmed with `0 time class` and group them by blocks, calculate the min fee, calculated the median fee, do prediction and calculate mean and median predicted fee. Then all values are placed in the same chart and we want the prediction to be somewhat between median and minimum fee, which means (above min fee) that our transaction were confirmed as well and (lower than median fee) we didn't overpay much. 
+Once we done with model, we looking in our test data the transactions which are confirmed with `0 time class` and group them by blocks, calculate the min fee, calculated the median fee, do prediction and calculate mean and median predicted fee. Then all values are placed in the same chart and we want the prediction to be somewhat between median and minimum fee, which means (above min fee) that our transaction were confirmed as well and (lower than median fee) we didn't overpay much.
 
 The close to min fee and following it shape is the best option.
 

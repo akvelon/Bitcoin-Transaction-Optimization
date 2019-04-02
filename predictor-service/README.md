@@ -4,7 +4,7 @@ Service that provides fee predictions
 ## Requirements
 
 * Python 3.6.*
-* All packages from requirements.txt
+* All packages from requirements.txt (``pip install -r requirements.txt``)
 * Trained model and scaler in ``model`` dir
 * Working rpc connection with full-node (see ``config/config.json``)
 
