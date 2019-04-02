@@ -3,7 +3,7 @@ This is service which serves the only purpose - supply the Transaction Optimizer
 
 It have the only endpoint which is `<server-location>/api/v1.0/prediction/<int:prediction_class>` where `prediction_class` is the number which specifies the the time within which we want transaction to be confirmed by blockchain, please reference the [Fee predictor trainer doc](FeePredictorTrainer.md) for more details about the data.
 
-In order to run the `fee predictor service` need the scaler and model which created byt the `Fee predictor trainer`.
+In order to run the `fee predictor service` need the scaler and model which created by the `Fee predictor trainer`.
 
 The whole server is pretty simple in its `app.py` there is defined route which get the prediction from `Predictor` class and convert it to `json`.
 

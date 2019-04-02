@@ -2,7 +2,7 @@
 
 Requirements:
 
-Python 3.7 or newer
+Python 3.6.1 or newer
 
 ```sh
 pip install boto3 requests
@@ -10,7 +10,7 @@ pip install boto3 requests
 
 Create `settings.json` file by example of `settings.example.json`.
 
-`settings.json` is searched in the currect directory.
+`settings.json` is searched in the current directory.
 
 ### settings
 
@@ -26,7 +26,8 @@ Create `settings.json` file by example of `settings.example.json`.
 *  `pay-request-visibility-time-seconds`: 15, - period of time during which pull transaction should be hidden for subsequent pulls. It should be at least twice as large as `optimize-round-time-seconds`
 *  `change-account-name`: `main`, bitcoin account name
 *  `fee-predictor-url`: `http://localhost:8000/api/v1.0/prediction/` - fee predictor service url without the last fragment. Full url looks like `http://localhost:8000/api/v1.0/prediction/<int:prediction_class>/`. Optional parameter. If it is not specified, than optimizer user hard-coded fees.
-  
+
+where `xxxxxxxxxxxx` - is AWS Account number
 
 How to use:
 

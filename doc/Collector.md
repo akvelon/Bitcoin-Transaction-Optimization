@@ -1,22 +1,22 @@
 # Collector
-The periods to get data for are customized in the code, please below if you need complete example follow the code in the [commit](https://gitlab.inyar.ru/bitcoin-transaction-optimization/nnfe/commit/dfac9b05c3d40fe41a38756d85ea0c213581b33b).
+The periods to get data for are customized in the code, please find below if you need complete example follow the code in the [commit](https://github.com/akvelon/Bitcoin-Transaction-Optimization/blob/master/nnfee/collector/console.rb#L11).
 
+It a Ruby based application which running in Docker container. There is some code here which allows to train the model but for purpose of BTO we only using code in `collector` folder.
 
-It a ruby based application which running in Docker container.
-So prerequisite is to install `Docker` for your system. There is some code here which allows to train the model but for purpose of BTO we only using code in `collector` folder.
-
-![project structure](images/collector/projectStructure.png)
+* Install `Docker` for your system (https://docs.docker.com/docker-for-windows/install/)
+* Switch container type to Linux (https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)
 
 1. Getting the data to analyze
-    1. First of all we need to download the metadata for part of blockchain this done by executing (this line can also be copied from `collect` file in the root).
+    1. First of all we need to download the metadata for part of blockchain
+    This could be done by executing ([collect](https://github.com/akvelon/Bitcoin-Transaction-Optimization/blob/master/nnfee/collect#L3)).
 		```
 		docker-compose run collector ruby collect.rb
 		```
-		Followed by updating `$last_block_index` variable(if needed) in `collector/harmony.rb` to the latest
+		Followed by updating `$last_block_index` variable (if needed) in `collector/harmony.rb` to the latest
 
-   1. Give script some time to work (approx 100-200 mb in `/data/collector/data` should be enough to start) it will also load the  `/data/collector/mempool.log` (which is what got from [here](https://jochen-hoenicke.de/queue/mempool.log)) with mempool characteristics logged each minute.
+   2. Give script some time to work (approx 100-200 mb in `/data/collector/data` should be enough to start) it will also load the  `/data/collector/mempool.log` (which is what got from [here](https://jochen-hoenicke.de/queue/mempool.log) - note, this is file more than 700 Mb) with mempool characteristics logged each minute.
 
-   2. After that just stop the execution (unless you want the whole blockchain which is more than 200Gb in that form of metadata blocks) by hitting `Ctrl-C` in console window
+   3. After that just stop the execution (unless you want the whole blockchain which is more than 200Gb in that form of metadata blocks) by hitting `Ctrl-C` in console window
 2. Next we need combine information from blockchain and mempool statistics.
 	1. This is done by executing prepare script with command (copy exactly with quotes, the line of code also live in `prepare` file in the root)
 		```
