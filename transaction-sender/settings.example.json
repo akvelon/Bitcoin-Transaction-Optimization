@@ -1,5 +1,5 @@
 {
-  "rpc-url": "http://localhost:18332/",
+  "rpc-url": "localhost:18332",
   "rpc-user": "mempool",
   "rpc-password": "password",
   "pay-request-chunk-size": 10,
