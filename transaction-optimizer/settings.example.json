@@ -1,6 +1,6 @@
 {
-  "rpc-url": "http://localhost:18443",
-  "rpc-user": "user",
+  "rpc-url": "http://localhost:18332",
+  "rpc-user": "mempool",
   "rpc-password": "password",
   "pay-request-chunk-size": 10,
   "aws-profile": "bto",

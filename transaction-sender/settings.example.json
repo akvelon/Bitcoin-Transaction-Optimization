@@ -3,7 +3,7 @@
   "rpc-user": "mempool",
   "rpc-password": "password",
   "pay-request-chunk-size": 10,
-  "aws-profile": "",
+  "aws-profile": "bto",
   "pay-request-sqs-url": "https://sqs.us-east-1.amazonaws.com/xxxxxxxxxxxx/pay-request",
   "prepared-transaction-sqs-url": "https://sqs.us-east-1.amazonaws.com/xxxxxxxxxxxx/prepared-transaction",
   "succeed-tx-que": "https://sqs.us-east-1.amazonaws.com/xxxxxxxxxxxx/succeed-txs",
