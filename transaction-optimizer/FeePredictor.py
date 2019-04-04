@@ -34,5 +34,5 @@ class FeePredictor:
     try:
       return result.json()['recommend_fee']
     except:
-      print("unable to obtain target fee. Fee Predictor service returned unexpectected result")
+      print("unable to obtain target fee. Fee Predictor service returned unexpected result")
       raise

@@ -17,7 +17,9 @@ import json
 
 class Predictor:
     URL = "https://dedi.jochen-hoenicke.de/queue/db.php"
-    TWO_UNIX_MINS = 60 * 2
+    # we need only 2 last records, so technically it is enough to have 2 mins,
+    # but sometimes service returns only 1 block for 2 min window
+    TWO_UNIX_MINS = 60 * 3
     MEMPOOL_TIME = 0
     MEMPOOL_TX_COUNT_INDEX = 1
     MEMPOOL_SIZE_INDEX = 2
