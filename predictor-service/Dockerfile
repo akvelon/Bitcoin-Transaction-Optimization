@@ -1,6 +1,6 @@
-FROM python:3.6-alpine
+FROM python:3.6
 
-RUN adduser -D predictor
+RUN adduser --disabled-password predictor
 
 WORKDIR /home/predictor
 
