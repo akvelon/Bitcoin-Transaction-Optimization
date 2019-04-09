@@ -37,15 +37,14 @@ git clone https://github.com/akvelon/Bitcoin-Transaction-Optimization
 * could be launched locally or on amazon EC2 machine.
 
 ### [Train](../predictor-trainer/README.md#run) Fee Predictor
-* [Get](collector.md) data for training.
-* Stop Collector with `Ctrl+C` after it collects about 100-200 Mb of data.
+* [Get](Collector.md) data for training.
 * Copy `.\nnfee\data\collector\out\*training.csv` to `.\predictor-trainer\data\training.csv` (note, that file should be renamed to without prefix - `training.csv`).
 * cd to `.\predictor-trainer`.
 * Train model: `python cli.py --train`.
 * Evaluate model: `python cli.py --evaluate`.
 * Copy `.\predictor-trainer\data\models\` to `.\predictor-service\model\`.
 
-### Launch [Fee Predictor](../predictor-service/Readme.md) service
+### Launch [Fee Predictor](../predictor-service/README.md) service
 * Run service
     ```bash
     flask run
@@ -56,7 +55,7 @@ git clone https://github.com/akvelon/Bitcoin-Transaction-Optimization
     ```
 * could be launched locally or on amazon EC2 machine
 
-### Launch [Transaction Optimizer](../transaction-optimizer/Readme.md)
+### Launch [Transaction Optimizer](../transaction-optimizer/README.md)
 * prepare `settings.json` - copy `settings.example.json` to `settings.json`:
     - set connection to Bitcoin full node with `rpc-...` settings
     - set correct SQS URLs.
@@ -66,12 +65,12 @@ git clone https://github.com/akvelon/Bitcoin-Transaction-Optimization
         python main.py
         ```
 
-### Launch [Transaction Sender](../transaction-sender/Readme.md)
+### Launch [Transaction Sender](../transaction-sender/README.md)
 ```bash
 python main.py
 ```
 
-### Send 10 payment requests with [Request Generator](../pay-request-generator/Readme.md)
+### Send 10 payment requests with [Request Generator](../pay-request-generator/README.md)
 ```bash
 python generator.py --push 10
 ```
