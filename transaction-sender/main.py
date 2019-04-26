@@ -5,7 +5,8 @@ Licensed under the Apache License, Version 2.0 (the "License"); you may not use 
     http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.
-"""
+"""
+
 from RPCHost import RPCHost
 from SQSQueue import SQSQueue
 from tx import Transaction
@@ -15,11 +16,10 @@ import time, boto3
 
 app_settings = Settings()
 
-sqs = boto3.client('sqs')
 bitcoind_url = 'http://' + app_settings['rpc-user'] + ':' + app_settings['rpc-password'] + '@' + app_settings['rpc-url']
 host = RPCHost(bitcoind_url)
 
-incoming_tx_queue = SQSQueue(url=app_settings['prepared-transaction-sqs-url'])
+incoming_tx_queue = SQSQueue(url=app_settings['prepared-transaction-sqs-url'], settings=app_settings)
 
 def loop():
     try:
