@@ -10,10 +10,10 @@ Unless required by applicable law or agreed to in writing, software distributed 
 import boto3
 
 class SQSQueue:
-    def __init__(self, url, settings):
+    def __init__(self, url, aws_profile_name = ""):
 
         self.url = url
-        self.sqs_client = boto3.Session(profile_name=settings["aws-profile"]).client('sqs')
+        self.sqs_client = boto3.Session(profile_name=aws_profile_name).client('sqs')
 
     def get_message(self):
         response = self.sqs_client.receive_message(

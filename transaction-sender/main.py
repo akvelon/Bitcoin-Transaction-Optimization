@@ -19,7 +19,9 @@ app_settings = Settings()
 bitcoind_url = 'http://' + app_settings['rpc-user'] + ':' + app_settings['rpc-password'] + '@' + app_settings['rpc-url']
 host = RPCHost(bitcoind_url)
 
-incoming_tx_queue = SQSQueue(url=app_settings['prepared-transaction-sqs-url'], settings=app_settings)
+queue_url = app_settings['prepared-transaction-sqs-url']
+aws_profile_name = app_settings["aws-profile"]
+incoming_tx_queue = SQSQueue(queue_url, aws_profile_name)
 
 def loop():
     try:

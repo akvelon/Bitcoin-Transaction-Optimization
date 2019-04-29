@@ -15,7 +15,9 @@ app_settings = Settings()
 
 class Transaction:
 
-    success_queue = SQSQueue(app_settings['succeed-tx-que'],app_settings)
+    queue_url = app_settings['succeed-tx-que']
+    aws_profile_name = app_settings["aws-profile"]
+    success_queue = SQSQueue(queue_url, aws_profile_name)
 
     def __init__(self, host, tx_str):
         self.tx_obj = json.loads(tx_str)
