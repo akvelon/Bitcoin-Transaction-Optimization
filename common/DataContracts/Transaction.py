@@ -8,7 +8,7 @@
 """
 
 class transaction:
-    """Request for payment.
+    """Describes blockchain transaction.
 
     * inputs:set<utxo> -- set of unspent outputs that will be spent in the transaction.
     * outputs:set<pay_request> -- set of requests that will be payed in the transaction.
