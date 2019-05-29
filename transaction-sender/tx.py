@@ -5,7 +5,8 @@ Licensed under the Apache License, Version 2.0 (the "License"); you may not use 
     http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.
-"""
+"""
+
 import json, boto3
 from SQSQueue import SQSQueue
 from Settings import Settings
@@ -14,7 +15,9 @@ app_settings = Settings()
 
 class Transaction:
 
-    success_queue = SQSQueue(app_settings['succeed-tx-que'])
+    queue_url = app_settings['succeed-tx-que']
+    aws_profile_name = app_settings["aws-profile"]
+    success_queue = SQSQueue(queue_url, aws_profile_name)
 
     def __init__(self, host, tx_str):
         self.tx_obj = json.loads(tx_str)
