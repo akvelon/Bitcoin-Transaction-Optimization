@@ -1,1 +1,1 @@
-# Bitcoin Transaction Optimization 
+# Bitcoin Transaction Optimization.
