@@ -8,6 +8,7 @@ This document walks through the contents of the folder "/coin-selection-with-lev
 ### Folder Contents
 
 \coin-selection-with-leverage
+
     1. \data
       a. utxo_sample.csv: Sample of UTXO set taken on October 1st, 2019
       b. cc_data.csv: Transaction amounts from credit card data taken from the IEEE-CIS Kaggle Competition (URL: https://www.kaggle.com/c/ieee-fraud-detection)
